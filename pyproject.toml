@@ -54,6 +54,7 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+  "mjlab",
   "pre-commit",
   "pyright>=1.1.386",
   "pytest>=8.4.2",
@@ -68,6 +69,7 @@ cu12 = ["torch>=2.7.0"]
 train = "mjlab.scripts.train:main"
 play = "mjlab.scripts.play:main"
 demo = "mjlab.scripts.demo:main"
+dummy_agent = "mjlab.scripts.dummy_agent:main"
 
 [[tool.uv.index]]
 url = "https://pypi.org/simple"
@@ -92,6 +94,12 @@ mujoco-warp = { git = "https://github.com/google-deepmind/mujoco_warp" }
 warp-lang = { index = "nvidia", marker = "sys_platform != 'darwin'" }
 mujoco = { index = "mujoco" }
 torch = { index = "pytorch-cu128", extra = "cu12", marker = "sys_platform != 'darwin'" }
+mjlab = { workspace = true, editable = true }
+
+[tool.uv.workspace]
+members = [
+    ".",
+]
 
 [tool.ruff]
 src = ["src"]  # Helpful for recognizing first-party imports.
